@@ -1,0 +1,5 @@
+{
+  "best_model": "Random Forest",
+  "best_test_mse": 0.1551,
+  "best_test_r2": 0.8261
+}
