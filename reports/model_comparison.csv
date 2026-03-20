@@ -1,0 +1,5 @@
+model,cv_mse,test_mse,test_r2,n_features
+XGBoost,0.317267,0.025968,0.959253,16
+Random Forest,0.340835,0.02836,0.955501,16
+Decision Tree,0.531306,0.076076,0.880628,16
+Linear Regression,0.543179,0.080622,0.873495,16

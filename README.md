@@ -1,85 +1,83 @@
-# Pastry Sales Forecasting for Demand Optimization
+# Pastry Prediction Analytics
 
-## Overview
+A recruiter-ready, portfolio-grade forecasting project built around a **store-day pastry sales prediction problem**.  
+The repository combines a modular Python pipeline, a narrative notebook, technical documentation, and a polished **Streamlit dashboard** designed to mirror the flow of the final report rather than a competition-submission page.
 
-This project focuses on forecasting daily pastry sales across multiple stores using historical sales, weather, and holiday data. The goal is to improve production planning, reduce food waste, and optimize inventory decisions.
+## What makes this project strong
 
-## Objective
+This is not a toy machine-learning notebook. The repository shows the full lifecycle of an applied forecasting problem:
 
-* Predict daily sales for each store
-* Identify key drivers of demand (weather, holidays, seasonality)
-* Build accurate forecasting models to support operational decisions
+- descriptive EDA that motivates the modeling choices
+- engineered temporal features such as lags and rolling means
+- time-based validation instead of relying only on a random split
+- model comparison and diagnostics
+- a presentation-first dashboard that explains the analytical story clearly
 
-## Dataset
+## Current best result
 
-* Source: Kaggle – Pastry Sales Forecasting Competition
-* Time Range: August 2021 – May 2024
-* Target Variable: Daily pastry sales (scaled)
+From the latest saved time-based results:
+- **Champion model:** XGBoost
+- **Best Test MSE:** 0.025968
+- **Best Test R²:** 0.959253
+- **Features used:** 16
 
-### Key Features:
+## Repository structure
 
-* Date (time series)
-* Store ID
-* Weather data (temperature, sunshine, precipitation)
-* Holiday indicators (public, school, special days)
-
-## Methodology
-
-### 1. Exploratory Data Analysis (EDA)
-
-* Time series trends and seasonality
-* Store-level sales patterns
-* Impact of holidays and weather on demand
-
-### 2. Feature Engineering
-
-* Lag features (previous day/week sales)
-* Rolling averages (7-day, 14-day trends)
-* Time-based features (day of week, month)
-* Weather interactions
-
-### 3. Models Used
-
-* Linear Regression
-* Decision Tree
-* Random Forest
-* XGBoost
-
-### 4. Evaluation Metric
-
-* Mean Squared Error (MSE)
-
-## Results
-
-* XGBoost achieved the best performance
-* Weather and holiday features significantly improved predictions
-* Weekly seasonality was a strong predictor of demand
-
-## Business Impact
-
-* Helps bakeries reduce overproduction and waste
-* Improves staffing and inventory planning
-* Enables data-driven decision-making for daily operations
-
-## Tools and Technologies
-
-* Python (Pandas, NumPy, Scikit-learn, XGBoost)
-* Google Colab
-* Matplotlib / Seaborn
-
-## Sample Visualizations
-
-(Add screenshots here: time series trends, feature importance, predictions vs actuals)
-
-## How to Run
-
-```bash
-pip install -r requirements.txt
-python src/train_model.py
+```text
+pastry_prediction_analytics/
+├── app/
+│   ├── Home.py
+│   ├── shared.py
+│   └── pages/
+│       ├── 0_EDA.py
+│       ├── 1_Feature_Engineering.py
+│       └── 2_Model_Results.py
+├── data/
+│   ├── raw/
+│   └── processed/
+├── docs/
+├── notebooks/
+│   └── pastry_pipeline.ipynb
+├── reports/
+├── src/
+└── tests/
 ```
 
-## Future Improvements
+## Dashboard structure
 
-* Incorporate deep learning models (LSTM)
-* Hyperparameter tuning (GridSearch / Optuna)
-* Deploy as a real-time forecasting app
+The Streamlit app follows the final-report flow:
+
+- **Home** — project framing, KPIs, execution logic
+- **EDA** — descriptive trend, distribution, calendar, and correlation views
+- **Feature Engineering** — lag and rolling-feature validation
+- **Model Results** — comparison, champion model, and diagnostics
+
+The dashboard uses:
+- KPI cards
+- readable inline tooltips
+- expandable “What does this mean?” interpretation blocks
+- interactive Plotly charts instead of static saved figures
+
+## How to run
+
+1. Put `train.csv`, `test.csv`, and `sample_submission.csv` into `data/raw/`
+2. Run the notebook: `notebooks/pastry_pipeline.ipynb`
+3. Launch the dashboard:
+   ```bash
+   streamlit run app/Home.py
+   ```
+
+## Why the evaluation is credible
+
+The project uses **time-based validation**. That matters because forecasting is a future-facing problem: a model should be tested on later dates, not on randomly shuffled rows that mix past and future patterns.
+
+## Portfolio value
+
+This project is built to show:
+- forecasting workflow design
+- feature-engineering discipline
+- model comparison and diagnostics
+- technical documentation quality
+- executive-friendly presentation
+
+It is meant to be easy for both hiring managers and technical reviewers to understand.
