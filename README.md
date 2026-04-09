@@ -67,17 +67,4 @@ The dashboard uses:
    streamlit run app/Home.py
    ```
 
-## Why the evaluation is credible
 
-The project uses **time-based validation**. That matters because forecasting is a future-facing problem: a model should be tested on later dates, not on randomly shuffled rows that mix past and future patterns.
-
-## Portfolio value
-
-This project is built to show:
-- forecasting workflow design
-- feature-engineering discipline
-- model comparison and diagnostics
-- technical documentation quality
-- executive-friendly presentation
-
-It is meant to be easy for both hiring managers and technical reviewers to understand.
